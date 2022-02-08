@@ -7,7 +7,7 @@ function App() {
   async function getCredits(){
     let config = {
       method: 'get',
-      url: 'http://localhost:5000/hello',
+      url: 'https://back.knowcode.app/hello',
       responseType: 'text',
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
     };
