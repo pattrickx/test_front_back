@@ -23,7 +23,7 @@ function App() {
 
   }
 
-  async function test(){
+  async function testToken(){
 
    
     let config = {
@@ -42,12 +42,32 @@ function App() {
     });
 
   }
+
+  async function testCookie(){
+
+   
+    let config = {
+      method: 'get',
+      url: 'https://back.knowcode.app/user',
+      responseType: 'text',
+      headers: { 'content-type': 'application/x-www-form-urlencoded'},
+    };
+    await axios(config)
+    .then(function (response) {
+        console.log(response)
+    })
+    .catch(function (error) {
+      console.log(error.response.data.message);
+    });
+
+  }
   return (
     <div className="App">
       <header className="App-header">
         
         <button type="button" onClick={()=>getCredits()}>LOGIN</button>
-        <button type="button" onClick={()=>test()}>TEST</button>
+        <button type="button" onClick={()=>testToken()}>TOKEN</button>
+        <button type="button" onClick={()=>testCookie()}>COOKIE</button>
       </header>
     </div>
   );

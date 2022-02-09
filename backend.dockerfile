@@ -16,6 +16,6 @@ RUN yes | pip3 install PyJWT==1.7.1
 
 WORKDIR /home/backend
 
-CMD gunicorn -w 4 "app:create_app(testing=False)" -b :5000 --reload --timeout 240
+CMD gunicorn -w 4 "app:create_app(testing=False)" -b :5000 --reload --timeout 240 --log-level debug
 
 
