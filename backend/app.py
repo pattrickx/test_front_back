@@ -3,7 +3,6 @@ from flask_cors import CORS
 import jwt
 import datetime
 from functools import wraps
-SECRET_KEY = "101010"
 
 def token_required(f):
     @wraps(f)
@@ -17,7 +16,7 @@ def token_required(f):
             return jsonify({'message': "token is missing!"}),401
 
         try: 
-            data = jwt.decode(token,SECRET_KEY)
+            data = jwt.decode(token,app.config['SECRET_KEY'])
             current_user = "current_user"
         except:
             return jsonify({'message': "token is invalid!"}),401
@@ -30,6 +29,7 @@ def create_app(testing: bool = True):
     app = Flask(__name__)
     CORS(app)
     app.config['CORS_HEADERS'] = 'Content-Type'
+    app.config['SECRET_KEY'] = "101010" # ADD on .env key for DataBase
 
     @app.route("/hello")
     @token_required
@@ -41,7 +41,7 @@ def create_app(testing: bool = True):
         auth = True
         if not auth:
             return make_response("Could not verify",401,{"WWW-Authenticate" : 'Basic realm="Login required!"'})
-        token = jwt.encode({'poblic_id':"12365","exp":datetime.datetime.utcnow()+datetime.timedelta(minutes=2)},SECRET_KEY)
+        token = jwt.encode({'poblic_id':"12365","exp":datetime.datetime.utcnow()+datetime.timedelta(minutes=2)},app.config['SECRET_KEY'])
         
         return jsonify({'token':token.decode('UTF-8')})
 
