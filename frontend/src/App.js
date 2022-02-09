@@ -8,7 +8,7 @@ function App() {
 
     let config = {
       method: 'get',
-      url: 'http://localhost:5000/login',
+      url: 'https://back.knowcode.app/login',
       responseType: 'text',
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
     };
