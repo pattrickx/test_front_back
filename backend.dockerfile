@@ -12,7 +12,10 @@ RUN yes | pip3 install Flask==2.0.1
 RUN yes | pip3 install flask-cors==3.0.10
 RUN yes | pip3 install requests==2.26.0
 RUN yes | pip3 install gunicorn==20.1.0
+RUN yes | pip3 install PyJWT==1.7.1
 
 WORKDIR /home/backend
 
 CMD gunicorn -w 4 "app:create_app(testing=False)" -b :5000 --reload --timeout 240
+
+
