@@ -8,7 +8,7 @@ function App() {
 
     let config = {
       method: 'get',
-      url: 'https://back.knowcode.app/login',
+      url: 'http://localhost:3000/login',
       responseType: 'text',
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
     };
@@ -28,7 +28,7 @@ function App() {
    
     let config = {
       method: 'get',
-      url: 'https://back.knowcode.app/hello',
+      url: 'http://localhost:3000/hello',
       responseType: 'text',
       headers: { 'content-type': 'application/x-www-form-urlencoded',
                   'x-access-token':token },
@@ -48,9 +48,11 @@ function App() {
    
     let config = {
       method: 'get',
-      url: 'https://back.knowcode.app/user',
+      url: 'http://localhost:3000/user',
       responseType: 'text',
-      headers: { 'content-type': 'application/x-www-form-urlencoded'},
+      withCredentials: true,
+      mode:'cors',
+      headers: { 'content-type': 'application/json'},
     };
     await axios(config)
     .then(function (response) {

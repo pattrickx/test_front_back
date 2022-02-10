@@ -9,6 +9,7 @@ services:
         container_name: backend
         environment:
             - PYTHONUNBUFFERED=TRUE
+            - SECRET_KEY="jskajjaljsjakljsklajs"
         ports:
             - "3000:5000"
 
